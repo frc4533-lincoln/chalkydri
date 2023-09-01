@@ -1,0 +1,4 @@
+documentation_style = "doxy"
+
+[struct]
+rename_fields = "CamelCase"

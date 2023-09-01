@@ -9,32 +9,58 @@ wheel_diameter = 0.0
 drive_gear_ratio = 0.0
 steer_gear_ratio = 0.0
 
-[motors]
-  # Drive motors
-  fld = 8
-  frd = 2
-  bld = 4
-  brd = 6
+[swerve.fl]
+  drive = {
+    motor_id = 8,
+    enc_rev = false,
+  }
+  steer = {
+    motor_id = 1,
+    enc_rev = ,
+    
+    abs_enc_id = ,
+    abs_enc_offset = 3.5450,
+    abs_enc_rev = false,
+  }
 
-  # Steer motors
-  fls = 1
-  frs = 3
-  bls = 5
-  brs = 7
+[swerve.fr]
+  drive = {
+    motor_id = 2,
+    enc_rev = true,
+  }
+  steer = {
+    motor_id = 3,
+    enc_rev = ,
+    
+    abs_enc_id = ,
+    abs_enc_offset = 1.6874,
+    abs_enc_rev = false,
+  }
 
-[encoders]
-  fld_rev = false
-  frd_rev = true
-  bld_rev = false
-  brd_rev = true
+[swerve.bl]
+  drive = {
+    motor_id = 4,
+    enc_rev = false,
+  }
+  steer = {
+    motor_id = 5,
+    enc_rev = ,
+    
+    abs_enc_id = ,
+    abs_enc_offset = 6.0700,
+    abs_enc_rev = false,
+  }
 
-[absolute_encoders]
-  fls_rev = false
-  frs_rev = false
-  bls_rev = false
-  brs_rev = false
-
-  fls_offset = 3.5450
-  frs_offset = 1.6874
-  bls_offset = 6.0700
-  brs_offset = 0.6259
+[swerve.br]
+  drive = {
+    motor_id = 6,
+    enc_rev = true,
+  }
+  steer = {
+    motor_id = 7,
+    enc_rev = ,
+    
+    abs_enc_id = ,
+    abs_enc_offset = 0.6259,
+    abs_enc_rev = false,
+  }

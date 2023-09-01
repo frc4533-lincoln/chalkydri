@@ -16,6 +16,8 @@
 //!  - **`l` / `r`**: left / right
 //!  - **`d` / `s`**: drive / steer
 
+use std::os::raw::c_int;
+
 #[repr(C)]
 #[derive(Deserialize, Clone, Copy)]
 pub struct ChalkydriConfig {
@@ -33,13 +35,54 @@ pub struct ChalkydriConfig {
   pub drive_gear_ratio: f32,
   pub steer_gear_ratio: f32,
 
-  pub motors: ChalkydriMotorConfig,
+  pub swerve: ChalkydriSwerveDriveConfig,
+}
 
-  pub encoders: ChalkydriEncoderConfig,
-  pub absolute_encoders: ChalkydriAbsoluteEncoderConfig,
+#[repr(C)]
+#[derive(Deserialize, Clone, Copy)]
+pub struct ChalkydriSwerveDriveConfig {
+    /// Front Left
+    pub fl: ChalkydriSwerveModuleConfig,
+    /// Front Right
+    pub fr: ChalkydriSwerveModuleConfig,
+    /// Back Left
+    pub bl: ChalkydriSwerveModuleConfig,
+    /// Back Right
+    pub br: ChalkydriSwerveModuleConfig,
+}
+
+#[repr(C)]
+#[derive(Deserialize, Clone, Copy)]
+pub struct ChalkydriSwerveModuleConfig {
+    pub drive: ChalkydriSwerveModuleDriveMotorConfig,
+    pub steer: ChalkydriSwerveModuleSteerMotorConfig,
+}
+
+#[repr(C)]
+#[derive(Deserialize, Clone, Copy)]
+pub struct ChalkydriSwerveModuleDriveMotorConfig {
+    pub motor_id: isize,
+    /// Encoder reversed?
+    pub enc_rev: bool,
+}
+
+#[repr(C)]
+#[derive(Deserialize, Clone, Copy)]
+pub struct ChalkydriSwerveModuleSteerMotorConfig {
+    pub motor_id: isize,
+    /// Encoder reversed?
+    pub enc_rev: bool,
+    
+    /// Absolute encoder ID
+    pub abs_enc_id: isize,
+    /// Absolute encoder offset
+    pub abs_enc_offset: f64,
+    /// Absolute encoder reversed?
+    pub abs_enc_rev: bool,
 }
 
 /// Motor IDs
+/*
 #[repr(C)]
 #[derive(Deserialize, Clone, Copy)]
 pub struct ChalkydriMotorConfig {
@@ -61,6 +104,7 @@ pub struct ChalkydriMotorConfig {
   /// `Back Right` *Steer* Motor ID
   pub brs: u8,
 }
+*/
 
 #[repr(C)]
 #[derive(Deserialize, Clone, Copy)]
