@@ -27,4 +27,4 @@ clean:
 	rm chalkydri libchalkydri.a *.cpp.o \
 		src/cpp/__generated.hpp
 
-.PHONY: all rust bindgen cpp
+.PHONY: all rust cbindgen cpp clean
