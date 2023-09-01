@@ -1,11 +1,11 @@
 plugins {
     id "cpp"
     id "google-test-test-suite"
-    id "edu.wpi.first.GradleRIO" version "2023.4.3"
+    id "edu.wpi.first.GradleRIO" version "2022.2.1"
 }
 
 // Define my targets (RoboRIO) and artifacts (deployable files)
-// This is added by GradleRIO's backing project DeployTools.
+// This is added by GradleRIO's backing project DeployUtils.
 deploy {
     targets {
         roborio(getTargetTypeClass('RoboRIO')) {
@@ -35,11 +35,8 @@ deploy {
 
 def deployArtifact = deploy.targets.roborio.artifacts.frcCpp
 
-// Set this to true to include the src folder in the include directories passed
-// to the compiler. Some eclipse project imports depend on this behavior.
-// We recommend leaving this disabled if possible. Note for eclipse project
-// imports this is enabled by default. For new projects, its disabled
-def includeSrcInIncludeRoot = false
+// Set this to true to enable desktop support.
+def includeDesktopSupport = true
 
 // Set to true to run simulation in debug mode
 wpi.cpp.debugSimulation = false
@@ -64,9 +61,6 @@ model {
                 }
                 exportedHeaders {
                     srcDir 'src/main/include'
-                    if (includeSrcInIncludeRoot) {
-                        srcDir 'src/main/cpp'
-                    }
                 }
             }
 
@@ -78,7 +72,6 @@ model {
 
             // Enable simulation for this component
             wpi.sim.enable(it)
-
             // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
             wpi.cpp.vendor.cpp(it)
             wpi.cpp.deps.wpilib(it)
@@ -104,3 +97,4 @@ model {
         }
     }
 }
+
