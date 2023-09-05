@@ -8,7 +8,7 @@ crate-type = ["staticlib", "cdylib"]
 path = "./src/rs/lib.rs"
 
 [dependencies]
-serde = { version = "1.0.188", features = ["derive"] }
+serde = { version = "1.0.188", features = ["derive", "alloc"], default-features = false }
 toml = { version = "0.7.6", features = ["parse"], default-features = false }
 
 [profile.dev.package.'*']

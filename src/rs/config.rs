@@ -16,8 +16,6 @@
 //!  - **`l` / `r`**: left / right
 //!  - **`d` / `s`**: drive / steer
 
-use std::os::raw::c_int;
-
 #[repr(C)]
 #[derive(Deserialize, Clone, Copy)]
 pub struct ChalkydriConfig {
@@ -34,6 +32,9 @@ pub struct ChalkydriConfig {
 
   pub drive_gear_ratio: f32,
   pub steer_gear_ratio: f32,
+
+    pub drive_ctrl: i32,
+    pub oper_ctrl: i32,
 
   pub swerve: ChalkydriSwerveDriveConfig,
 }

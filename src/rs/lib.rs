@@ -1,4 +1,9 @@
+#![no_std]
 #![warn(clippy::all)]
+
+extern crate core;
+extern crate alloc;
+extern crate std;
 
 #[macro_use]
 extern crate serde;
@@ -7,6 +12,7 @@ extern crate toml;
 mod config;
 
 use std::{fs::File, io::Read};
+use alloc::string::String;
 
 pub use config::*;
 

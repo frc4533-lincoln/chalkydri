@@ -6,7 +6,7 @@
 
 #include <frc2/command/CommandPtr.h>
 
-#include "subsystems/ExampleSubsystem.hpp"
+#include "../subsystems/ExampleSubsystem.hpp"
 
 namespace autos {
 /**

@@ -1,4 +1,5 @@
 documentation_style = "doxy"
+include_guard = "__CHALKYDRI_RUST_GENERATED_HPP"
 
 [struct]
 rename_fields = "CamelCase"
