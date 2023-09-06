@@ -28,6 +28,7 @@ SRC = Robot.cpp RobotContainer.cpp \
 all: cpp
 
 rust: cbindgen
+	export COMPILER_PATH="${TOOLCHAIN_PATH}/arm-nilrt-linux-gnueabi/bin"
 	CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABI_RUSTFLAGS="${RUSTFLAGS}" cargo b -vv --target arm-unknown-linux-gnueabi --profile ${TARGET_PROFILE}
 	cp ${TARGET_DIR}/libchalkydri.a .
 
@@ -40,6 +41,7 @@ cpp: _cpp ${SRC}
 	${STRIP} -s chalkydri
 
 _cpp:
+	export COMPILER_PATH="${TOOLCHAIN_PATH}/arm-nilrt-linux-gnueabi/bin"
 	mkdir -p ./build/commands/ ./build/subsystems/
 
 ${SRC}:
